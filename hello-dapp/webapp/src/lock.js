@@ -48,7 +48,7 @@ export const deployContract = async (unlockTime, _value) => {
     const count = await web3.eth.getTransactionCount(provider.selectedAddress);
     console.log(provider.selectedAddress, "getTransactionCount:", count.toString(10))
     const accountNonce =
-  '0x' + (parseInt(count.toString(10)) + 1).toString(16)
+  '0x' + (parseInt(count.toString(10))).toString(16)
   //   alert(accountNonce)
     // console.log("sent amt of wei:"+ "0x"+web3.utils.toBigInt(web3.utils.toWei(parseInt(_value), "wei")).toString(16))
     console.log("sent amt of wei:"+web3.utils.toWei(parseInt(_value), "wei"));
