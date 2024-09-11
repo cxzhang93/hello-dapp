@@ -111,11 +111,14 @@ export const unlock = async () => {
   if (provider) {
     console.log("found provider", "provider.selectedAddress:"+provider.selectedAddress)
     const count = await web3.eth.getTransactionCount(provider.selectedAddress);
+    const accountNonce =
+    '0x' + (parseInt(count.toString(10))).toString(16)
     console.log(provider.selectedAddress, "getTransactionCount:", count.toString(10))
     try{
       await provider.request({
         method: "eth_sendTransaction",
         params: [{
+          nonce: accountNonce,
           gasPrice: '766184446', // customizable by user during MetaMask confirmation.
           gas: '300000', // customizable by user during MetaMask confirmation.
           from: provider.selectedAddress,
@@ -151,11 +154,14 @@ export const withdraw = async () => {
   if (provider) {
     console.log("found provider", "provider.selectedAddress:"+provider.selectedAddress)
     const count = await web3.eth.getTransactionCount(provider.selectedAddress);
+    const accountNonce =
+    '0x' + (parseInt(count.toString(10))).toString(16)
     console.log(provider.selectedAddress, "getTransactionCount:", count.toString(10))
     try{
       let result = await provider.request({
         method: "eth_sendTransaction",
         params: [{
+          nonce: accountNonce,
           gasPrice: '766184446', // customizable by user during MetaMask confirmation.
           gas: '300000', // customizable by user during MetaMask confirmation.
           from: provider.selectedAddress,
